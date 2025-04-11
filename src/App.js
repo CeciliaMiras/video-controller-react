@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React, { useRef } from 'react';
+import video from './asset/Maluma - Cosas Pendientes (Official Video) (1).mp4';
 
 function App() {
+  const videoRef=useRef(null);
+  const videoPlay=()=>{
+    videoRef.current.play();
+  };
+  const videoPause=()=>{
+    videoRef.current.pause();
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <video ref={videoRef} width="400" height="300" controls>
+      <source src={video} type="video/mp4"></source>
+      </video>
+      <div>
+      <button onClick={videoPlay}>Play</button>
+      <button onClick={videoPause}>Pause</button>
+      </div>
+      
+
+
+
     </div>
   );
 }
